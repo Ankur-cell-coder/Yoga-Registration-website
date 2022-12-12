@@ -30,7 +30,8 @@ function Signup() {
         await updateProfile(user, {
           displayName: values.name,
         });
-        navigate("/home");
+        navigate("/mainpage",{state:{id:1,name:values.email}});
+        
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);

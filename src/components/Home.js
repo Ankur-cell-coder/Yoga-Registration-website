@@ -1,16 +1,17 @@
 import React,{useState} from 'react'
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 function Home(props) {
-
+    const location=useLocation();
+    var val=location.state.name;
    const [data,setData]=useState({
     slot:"6-7AM",
     amount:"500",
     date:"",
     age:"",
-    email:"",
+    email:val,
    });
 
    const {
@@ -27,7 +28,33 @@ function Home(props) {
   
   const handleSubmit = async e =>{
     e.preventDefault();
+    const res= await fetch('https://yoga-form-bde99-default-rtdb.firebaseio.com/userDataRecords.json',{
+    method:"POST",
+    headers : {
+       "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+        slot,
+        amount,
+        date,
+        age,
+        email
+    }),
+});
 
+  if(res){
+    setData({
+        slot:"6-7AM",
+        amount:"500",
+        date:"",
+        age:"",
+        email:"",
+    });
+    alert("Data Stored");
+  }
+  else
+  alert("please fill data");
+    
   };
 
   return (
@@ -98,14 +125,19 @@ function Home(props) {
             <br/>
 
            
+          <button
+           type="submit" 
+           style={{ fontsize: "20px", color: "white", height: "40px", width: "100%", marginBottom: "20px", backgroundColor: "#3498DB", border: "none" }} 
+           onClick={handleSubmit}
+            >
+            Submit
+          </button>
 
-            <input
-                type="submit"  
-                style={{ fontsize: "20px", color: "white", height: "40px", width: "100%", marginBottom: "20px", backgroundColor: "#3498DB", border: "none" }} 
-                value="Submit" 
-              />
+           
         </form>
        </div> 
+     
+
     </Home1>
       
   );

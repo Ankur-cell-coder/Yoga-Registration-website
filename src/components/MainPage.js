@@ -72,14 +72,14 @@ function MainPage() {
 
   return (
     <Main1>
-      <div style={{ border: '1px solid red' }}>
+      <div className="content1" style={{ border: '1px solid red' ,borderLeft:'none',borderRight:'none'}}>
         <h1>To Choose Slot please Click here.</h1>
-        <button onClick={navigateToHome}>Choose Slot</button>
+        <button className="slotbtn" onClick={navigateToHome}>CHOOSE SLOT</button>
         <br />
         <br />
       </div>
 
-      <div style={{ border: '1px solid red', marginTop: "2px" }}>
+      <div className="content1" style={{ border: '1px solid red',borderLeft:'none',borderRight:'none' }}>
         <h1>Your Current Slot is </h1>
 
         {
@@ -98,8 +98,9 @@ function MainPage() {
         }
       </div>
 
-      <div className="content" style={{ border: '1px solid red', marginTop: "2px" }}>
+      <div className="content" style={{ border: '1px solid red',borderLeft:'none',borderRight:'none'}}>
         <h1>Terms and Conditions:-</h1>
+        <div className="points">
         <li>
           <span>In a month you can choose slot only once and no updation is possible.</span>
           <br />
@@ -119,6 +120,8 @@ function MainPage() {
         <li>
           <span>You have to pay a fixed amount of 500.</span>
         </li>
+        </div>
+        
       </div>
 
     </Main1>
@@ -130,6 +133,47 @@ function MainPage() {
 export default MainPage
 
 const Main1 = styled.div`
+.body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:#f4b947;
+}
+
+.content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:10px;
+  margin:20px;
+}
+
+.content1{
+  margin:20px;
+  border:none;
+  padding:30px;
+}
+.slotbtn{
+  width:400px;
+  height:30px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+.input-label{
+  font-size:26px;
+  letter-spacing:2px;
+
+}
+
+.points{
+  display:flex;
+  align-items:flex-start;
+  justify-content:left;
+  flex-direction:column;
   
+}
+
 `;
 

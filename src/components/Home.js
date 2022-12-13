@@ -8,7 +8,7 @@ toast.configure()
 
 
 function Home(props) {
-  
+
   const location = useLocation();
   var val = location.state.name;
   const [data, setData] = useState({
@@ -29,13 +29,13 @@ function Home(props) {
 
 
   const notify = () => {
-    toast.success( 'Data Stored Sucessfully',{position:toast.POSITION.TOP_CENTER});
+    toast.success('Data Stored Sucessfully', { position: toast.POSITION.TOP_CENTER });
   }
-   const warnify = () => {
-     toast.warn('Please fill data correctly',{position:toast.POSITION.TOP_CENTER})
-    
-     
-   }
+  const warnify = () => {
+    toast.warn('Please fill data correctly', { position: toast.POSITION.TOP_CENTER })
+
+
+  }
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -43,7 +43,7 @@ function Home(props) {
 
   const handleSubmit = async e => {
 
-    if ((amount == '500') && (age >= 18 && age <= 65) && (email == val)&&(slot=="6-7AM"||slot=="7-8AM"||slot=="8-9AM"||slot=="5-6PM")) {
+    if ((amount == '500') && (age >= 18 && age <= 65) && (email == val) && (slot == "6-7AM" || slot == "7-8AM" || slot == "8-9AM" || slot == "5-6PM")) {
       e.preventDefault();
       const res = await fetch('https://yoga-form-bde99-default-rtdb.firebaseio.com/userDataRecords.json', {
         method: "POST",
@@ -67,7 +67,7 @@ function Home(props) {
           age: "",
           email: val,
         });
-       notify();
+        notify();
       }
       else {
         alert("please fill data correclty");

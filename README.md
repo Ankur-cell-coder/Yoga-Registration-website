@@ -68,3 +68,38 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+### Problem Statement 
+
+- Only people within the age limit of 18-65 can enroll for the monthly classes and they will
+be paying the fees on a month on month basis.
+- They can enroll any day but they will have to pay for the entire month. The monthly fee is
+500/- Rs INR.
+- There are a total of 4 batches a day namely 6-7AM, 7-8AM, 8-9AM and 5-6PM. The
+participants can choose any batch in a month and can move to any other batch next
+month.
+
+### Assumption
+
+User can only make their own Payment and can choose their own slot only.
+
+### Logic
+
+Here After login we use login credential i.e:-(cookies) 
+use navigate and location method to send that email to redirect and send email to required place.
+
+After that we have a choose slot button there we fetch data from database and check whether slot is already booked for particular email 
+or not .
+If slot is already book for that particular months then it shows their slot and user remain in that page only.
+Otherwise :-
+  it move to next page where we have a form to fill.
+  in form email,amount is already filled for slot we provide 4 options users have to choose one from them .
+  email and amount should not be changed .
+  All fields are mandatory to filled.
+  if all criteria gets fuilfilled then data gets stored into database and user gets assigned with a particular slot.
+  
+   
+
+

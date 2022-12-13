@@ -102,6 +102,14 @@ Otherwise :-
   All fields are mandatory to filled.
   if all criteria gets fuilfilled then data gets stored into database and user gets assigned with a particular slot.
   
+  ### Tech Stack
+   ## Frontend 
+      React.js
+      Javascript
+   ## Database 
+      Realtime Firebase
    
+      
+     
 
 

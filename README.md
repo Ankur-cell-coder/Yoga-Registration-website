@@ -85,6 +85,8 @@ month.
 
 User can only make their own Payment and can choose their own slot only.
 
+Admin have to delete userdata records on last day of each months.
+
 ### Logic
 
 Here After login we use login credential i.e:-(cookies) 

@@ -85,7 +85,7 @@ month.
 
 User can only make their own Payment and can choose their own slot only.
 
-Admin have to delete userdata records on last day of each months.
+Admin have to delete userdata records on last day of each months. It require just one click only have to delete usersaved slot record not user authentication record.
 
 ### Logic
 

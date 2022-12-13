@@ -5,6 +5,11 @@ import styled from "styled-components";
 import InputControl from "./InputControl";
 import { auth } from "../firebase";
 
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
+
 function Signup() {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -12,12 +17,20 @@ function Signup() {
     email: "",
     pass: "",
   });
+
+    const notify = () => {
+    toast.success( 'Sucessfully Login!',{position:toast.POSITION.TOP_CENTER});
+  }
+   const warnify = () => {
+     toast.warn('EveryField is compulsory!',{position:toast.POSITION.TOP_CENTER})
+ 
+   }
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
   const handleSubmission = () => {
     if (!values.name || !values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
+      warnify();
       return;
     }
     setErrorMsg("");
@@ -31,36 +44,40 @@ function Signup() {
           displayName: values.name,
         });
         navigate("/mainpage",{state:{id:1,name:values.email}});
-        
+        notify();
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
+        toast.warn(err.message,{position:toast.POSITION.TOP_CENTER})
+ 
       });
   };
 
-  return (
+
+  return ( 
     <Signup1>
+      <h1></h1>
+      <br/>
     <div className='container'>
       <div className='innerBox'>
-        <h1 className='heading'>Signup</h1>
+        <h1 className='heading'>SIGNUP</h1>
 
         <InputControl
-          label="Name"
+          label="NAME"
           placeholder="Enter your name"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, name: event.target.value }))
           }
         />
         <InputControl
-          label="Email"
+          label="EMAIL"
           placeholder="Enter email address"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
         <InputControl
-          label="Password"
+          label="PASSWORD"
           placeholder="Enter password"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
@@ -69,13 +86,15 @@ function Signup() {
 
         <div className='footer'>
           <b className='error'>{errorMsg}</b>
-          <button onClick={handleSubmission} disabled={submitButtonDisabled}>
-            Signup
+          <button onClick={handleSubmission} disabled={submitButtonDisabled}
+           style={{color:"black",background:"#8ECAE6",width:"500px",height:"35px",margin:"10px",border:"none"}}
+           >
+            SIGNUP
           </button>
           <p>
-            Already have an account?{" "}
+            Already have an account ? {""}
             <span>
-              <Link to="/">Login</Link>
+              <Link to="/">LOGIN</Link>
             </span>
           </p>
         </div>
@@ -88,74 +107,29 @@ function Signup() {
 export default Signup;
 
 const Signup1=styled.div`
+display:flex;
+
 .container {
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 100%;
-    min-height: 14vh;
+    min-height: 100px;
     width: 100%;
-    background: linear-gradient(to right, #9900ff, #cc80ff);
     display: flex;
     justify-content: center;
-    align-items: center;
   }
   
   .innerBox {
+    margin:50px;
     min-width: 480px;
     height: fit-content;
     width: fit-content;
     background-color: #fff;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    padding: 30px;
+    padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
   }
   
-  .footer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .footer .error {
-    font-weight: bold;
-    font-size: 0.875rem;
-    color: #ff3300;
-    text-align: center;
-  }
-  
-  .footer button {
-    outline: none;
-    border: none;
-    background-color: #9900ff;
-    color: #fff;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 10px 16px;
-    width: 100%;
-    transition: 100ms;
-    cursor: pointer;
-  }
-  
-  .footer button:disabled {
-    background-color: gray !important;
-  }
-  
-  .footer button:hover {
-    background-color: #aa2aff;
-  }
-  
-  .footer p {
-    font-weight: 700;
-    color: #000;
-  }
-  
-  .footer p span a {
-    font-weight: bold;
-    color: #9900ff;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    text-decoration: none;
-  }
 `;

@@ -1,20 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth';
-import {
-  getFirestore
-} from "firebase/firestore";
 
-import {
-  getStorage
-} from "firebase/storage"
-
-
+import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBBLLAvmh0dunEgJj3GiSpq6yJWGOIDWSw",
   authDomain: "yoga-form-bde99.firebaseapp.com",
+  databaseURL: "https://yoga-form-bde99-default-rtdb.firebaseio.com",
   projectId: "yoga-form-bde99",
   storageBucket: "yoga-form-bde99.appspot.com",
   messagingSenderId: "908170426946",
@@ -26,12 +20,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth=getAuth();
-const db = getFirestore(app);
-const storage = getStorage(app);
+const db = getDatabase(app);
 
 export {
   app,
   auth,
-  db,
-  storage
+  db
 };
